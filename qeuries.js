@@ -336,7 +336,76 @@ db.test.updateMany(
 //............................................................................
 
 
+//$match-->Filters documents based on a specified query
+// db.test.aggregate([
+//     {
+//         $match: {
+//             gender: 'Male',
+//             age: { $gte: 20, $lte: 40 }
+//         }
+//     },
+//     {
+//         $project: {
+//             gender: 1,
+//             phone: 1,
+//             age: 1
+//         }
+//     }
+// ])
 
+//$addFields-->add new fiends to matched document
+// db.test.aggregate([
+//     {
+//         $match: { gender: 'Male' }
+//     },
+//     {
+//         $addFields: { Course: 'Level-2', Tech: 'Programming Hero' } //Course, Tech fields will be added
+//     },
+//     {
+//         $project: { name: 1, gender: 1, Course: 1, Tech: 1 }
+//     }
+// ])
+
+//-->add new fields to all documents-->($merge)
+// db.test.aggregate([
+//     { $addFields: { married: true } },
+//     {$merge:'test'} // 'test'-->test document a add hobe, & $merge obossoi last step hote hobe
+// ])
+
+//$out-->create a new collection with some changes
+// db.test.aggregate([
+//     { $match: { gender: 'Female', age: { $lte: 30 } } },  //match koralam
+//     { $addFields: { isSelected: true } },  //fields add korlam
+//     { $out: "selected-lady" } //'selected-lady' name notun collection create korlam
+// ])
+
+//$group-->The $group stage separates documents into groups according to a "group key"
+// db.test.aggregate([
+//     {
+//         $group: { _id: "$gender"}
+//     }
+// ])
+
+//$sum-->kon group ar under a koyta kore gender same ace tar sonkha
+// db.test.aggregate([
+//     {
+//         $group: { _id: "$gender", total:{$sum: 1}}
+//     }
+// ])
+
+// db.test.aggregate([
+//     { $group: { _id: "$age", total: { $sum: 1 } } }
+// ])
+
+// db.test.aggregate([
+//     { $group: { _id: "$education.major", total: { $sum: 1 } } }
+// ])
+
+db.test.aggregate([
+    {
+        $group: { _id: "$gender", total: { $sum: 1 }, amakeNamDekhao: { $push: "$name" } }
+    }
+])
 
 
 
