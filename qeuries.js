@@ -156,7 +156,7 @@ db.test.updateOne(
     }
 )
 
-// $addToSet--> update a value in an array unless the value is already exists in this array
+// $addToSet--> add a value in an array unless the value is already exists in this array
 
 // update one element in an array
 db.test.updateOne(
@@ -190,7 +190,7 @@ db.test.updateOne(
     }
 )
 
-// $push -->
+// $push -->ja dibo tai add hobe, seta duplicate holeo add hobe
 db.test.updateOne(
     { _id: ObjectId("6406ad65fc13ae5a400000c7") },
     {
@@ -204,6 +204,24 @@ db.test.updateOne(
     }
 )
 
+db.test.updateOne(
+    {},//---> kicu nai mane select all documents. joto gula document ace tar sob gulo update hobe
+    {
+        $push: {
+            interests: {
+                $each: ['x', 'y', 'x'] //-->x,y,z alada alada element hisebe array te add hobe, duplicate thakleo add hobe
+            }
+
+        }
+
+    }
+)
+
+//Summery
+// $set-->replace the value of a "field" with specified value
+// $addToSet-->add element in an "array" unless the element is already exists in this array
+// $each-->insert multiple elements in an array
+// $push-->duplicate holeo seta array te element add hobe. mane ja dibo ti add hobe
 
 // $unset-->delete a field with value
 db.test.updateOne(
