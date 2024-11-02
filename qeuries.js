@@ -25,6 +25,11 @@ db.broker.find()
 // $eq-->equal to
 db.test.find({ age: { $eq: 30 } })
 
+//in mongodb queries, order is usually as follows,
+// ⬇filter
+// ⬇sort
+// ⬇projection
+
 // $ne -->not equal to
 db.test.find({ age: { $ne: 30 } }).sort({ age: 1 })
 
