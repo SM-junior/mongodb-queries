@@ -59,9 +59,9 @@ db.test.find({
     gender: 'Female'
 }).projection({ email: 1, interests: 1 })
 
-// implicit and-->2 br tar besi field diye find korar jonno
+// implicit and-->2 ba tar besi field diye find korar jonno
 db.test.find({
-    age: { $gte: 18, $lte: 30 },  //field same hole just maj khane korma dilei hbe
+    age: { $gte: 18, $lte: 30 },  //field same hole just maj khane koma dilei hobe
     gender: 'Male'
 }).projection({ age: 1, email: 1, gender: 1 }).sort({ age: 1 })
 
@@ -102,7 +102,7 @@ db.test.find({
 
 // size-->check how many elements exists in an array
 db.test.find({
-    skills: { $size: 2 } //size:2-->skills array contains 2 elements
+    skills: { $size: 2 } //size:2-->je je skills array 2ta element contain kore taderke dao
 }).projection({ skills: 1 })
 
 // $all-->
