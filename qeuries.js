@@ -120,11 +120,12 @@ db.test.find({
 }).projection({ interests: 1 })
 
 
-// $elemMatch-->
+// $elemMatch-->matches documents that contain an array field &
+// contain at least one element that matches all the specified query criteria
 db.test.find({
     skills: {
         $elemMatch: {
-            name: "JAVA", //name hobe JAVA & JAVA ar level hobe expert
+            name: "JAVA", //name hote hobe JAVA & JAVA ar level hote hobe expert
             level: "Expert"
         }
     }
