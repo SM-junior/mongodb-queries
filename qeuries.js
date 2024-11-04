@@ -190,6 +190,7 @@ db.test.updateOne(
     }
 )
 
+
 // $push -->ja dibo tai add hobe, seta duplicate holeo add hobe
 db.test.updateOne(
     { _id: ObjectId("6406ad65fc13ae5a400000c7") },
@@ -248,16 +249,7 @@ db.test.updateOne(
         }
     }
 )
-db.test.updateOne(
-    { _id: ObjectId("6406ad65fc13ae5a400000c7") },
-    {
-        $addToSet: {
-            languages: {
-                $each: ['urdu', 'hindi', 'farsi', 'bangla']
-            }
-        }
-    }
-)
+
 
 // $pull-->remove any single element from array
 db.test.updateOne(
